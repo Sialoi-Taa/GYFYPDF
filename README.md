@@ -6,8 +6,7 @@ An interactive PDF viewer and editor built with Python, Tkinter, and pypdfium2. 
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Contributing](#contributing)
-- [Acknowledgments](#Acknowledgments)
+- [Acknowledgments](#acknowledgments)
 
 ## Features
 - View and navigate multi-page PDFs with a scrollable GUI.
