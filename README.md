@@ -17,7 +17,7 @@ An interactive PDF viewer and editor built with Python, Tkinter, and pypdfium2. 
 1. Clone the repository:
    ```bash
    git clone https://github.com/Sialoi-Taa/GYFYPDF.git
-   cd PDF_EDITOR
+   cd GYFYPDF
    ```
 2. Run the package installation scripts to make sure you get all of the dependencies downloaded before running.
    ```bash
