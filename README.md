@@ -19,6 +19,8 @@ An interactive PDF viewer and editor built with Python, Tkinter, and pypdfium2. 
    git clone https://github.com/Sialoi-Taa/GYFYPDF.git
    cd GYFYPDF
    ```
+
+2. Make sure that you have a python interpretor to run the scripts.
 2. Run the package installation scripts to make sure you get all of the dependencies downloaded before running.
    ```bash
    python3 install_packages.py
@@ -32,47 +34,47 @@ Using this way you will have to run the editor through terminal every time. If y
    ```bash
    python3 manual_view.py
    ```
-2. Choose a file to open.
-![open_sample_file](/imgs/open_sample_file.png)
+2. Choose a file to open.  
+![open_sample_file](./imgs/open_sample_file.png)
 3. Using the buttons and text boxes on the right side of the editor, edit the PDF as you'd like.
-![full layout](/imgs/fullscreen_layout.png)
+![full layout](./imgs/fullscreen_layout.png)
 4. When you're satisfied with what was editted, press the save button to save the PDF. If the editor closes before saving, all modifications will be erased and the user will be forced to start over.
-![button layout](/imgs/button_layout.png)
+![button layout](./imgs/button_layout.png)
 
 ### Running Through Registry Edit
 Using this method you'll be able to right click any PDFs and have a more access friendly interface to run the script.  
-![right_click](/imgs/right_click_menu_example.png)
+![right_click](./imgs/right_click_menu_example.png)
 
 1. Go to your Windows search bar and type below
    ```bash
    regedit
    ```
    You'll see a window as such below:  
-![Registry Edit Base Menu](/imgs/base_regedit_menu.png)
+![Registry Edit Base Menu](./imgs/base_regedit_menu.png)
 
 2. Select and expand the *HKEY_CLASSES_ROOT* folder.  
-![HKEY_CLASSES_ROOT](/imgs/HKEY_expanded.png)
+![HKEY_CLASSES_ROOT](./imgs/HKEY_expanded.png)
 
 3. Scroll down, select and expand the "*" folder.  
-![pdf_folder](/imgs/all_folder_expanded.png)
+![pdf_folder](./imgs/all_folder_expanded.png)
 
 4. Select and expand the *shell* folder.  
-![expand_shell_folder](/imgs/shell_folder_expanded.png)
+![expand_shell_folder](./imgs/shell_folder_expanded.png)
 
 5. Select and right click the *shell* folder icon. Press "New" in the menu and then press "Key".  
-![create_new_key](/imgs/create_new_key.png)  
+![create_new_key](./imgs/create_new_key.png)  
 
 6. A new folder will appear in the regedit window, name the folder "Open with PDF Editor".  
-![context_key_created](/imgs/context_key_created.png)
+![context_key_created](./imgs/context_key_created.png)
 
 7. Select the "Open with PDF Editor" folder and you'll a the variable on the right side. Double click that variable and a window will open.   
-![point_to_default_value](/imgs/pointing_to_default_context_value.png)  
+![point_to_default_value](./imgs/pointing_to_default_context_value.png)  
 
 8. Press OK after changing the default value to "Open with PDF Editor" but without quotes and press OK.  
-![change_context_value](/imgs/change_context_default_value.png)  
+![change_context_value](./imgs/change_context_default_value.png)  
 
 9. Select and right click the "Open with PDF Editor" folder icon. Make a new key and call it command.  
-![create_command_key](/imgs/command_selected.png)  
+![create_command_key](./imgs/command_selected.png)  
 Before moving onto the next step you have to find a 2 things. First you need the path to the where your python executable is located on your machine.  
    You can do this by typing the following:
    ```bash
@@ -82,22 +84,22 @@ Before moving onto the next step you have to find a 2 things. First you need the
    Right click the file, copy the absolute path and store it somewhere for the next step. 
 
 10. Select the command key and double click the default value. A menu to edit the value will open.  
-![command_value_changed](/imgs/change_command_default_value.png)
+![command_value_changed](./imgs/change_command_default_value.png)
 
 11. Select the default value box and place 3 double quotes ("") with space inbetween them.  
-![double quotes](/imgs/double_quote_data.png)  
+![double quotes](./imgs/double_quote_data.png)  
 
 12. In the first double quotes, place in the path for your *python3.exe* file. An example would be below:  
 ```bash
 "C:\Users\joe\AppData\Local\Microsoft\WindowsApps\python3.exe"
 ```
-![first_double](/imgs/python_path.png)
+![first_double](./imgs/python_path.png)
 
 12. In the second double quotes, place in the path for your *reg_view.exe* file. An example would be below:  
 ```bash
 "C:\Users\joe\OneDrive\Desktop\Custom_Utils\pdf_editor\reg_view.py"
 ```
-![second_double](/imgs/reg_view_path.png)
+![second_double](./imgs/reg_view_path.png)
 
 12. In the third double quotes, place in "". An example would be below:  
 ```bash
