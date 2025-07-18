@@ -33,15 +33,19 @@ if __name__ == "__main__":
     log_path = os.path.join(logs_dir, "log.txt")
     Logger().set_log_location(log_path)
     
-    # Check if the script was run with a file argument
+
+    # Check if the script was run with a file argument or not
+    file_path = ""
     if len(sys.argv) > 1:
         file_path = sys.argv[1]  # This will be the file path passed from the registry
-        if os.path.exists(file_path) and file_path.lower().endswith('.pdf'):
-            Logger().print(f"Opening PDF: {file_path}")
-            main(file_path=file_path)
-            # You can now use the file_path to open and edit the PDF
-        else:
-            Logger().print("Invalid file path or not a PDF file.")
     else:
-        Logger().print("No file path provided.")
+        file_path=open_file()
+
+    # Check if the file was a pdf
+    if os.path.exists(file_path) and file_path.lower().endswith('.pdf'):
+        Logger().print(f"Opening PDF: {file_path}")
+        main(file_path=file_path)
+        # You can now use the file_path to open and edit the PDF
+    else:
+        Logger().print("Invalid file path or not a PDF file.")
     
