@@ -144,8 +144,12 @@ class Button_Processor:
             
             # Changes the list of page selects into a set of unique page numbers
             page_nums = del_str_list_to_int_list(page_nums)
+            if not page_nums:
+                raise ValueError("User entered an invalid input!")
+            
         except ValueError as e:
             Logger().print(f"Error: {e}")
+            Logger().print("[Button Processor] Delete procedure finished.")
             return None
         
         command = Command()

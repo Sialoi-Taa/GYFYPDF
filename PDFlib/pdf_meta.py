@@ -82,6 +82,11 @@ class PDF_Meta:
 
     def remove_pages(self, pages_to_remove:Set[int]=None):
         Logger().print("[PDF_Meta] Removing pages from PDF...")
+        
+        if self.pdf_length() == 1 or self.pdf_length() <= len(pages_to_remove):
+            Logger().print("[PDF_Meta] No pages were removed due to removing more pages than allowed.")
+            return None
+        
         from .utils import remove_file, rename_file, prep_dest_file
         # Get current PDF and file path
         pdf = self._data["pdf"]

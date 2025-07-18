@@ -59,10 +59,10 @@ def string_elems_to_int_list(str_list:List[str]=None, lb:int=None, ub:int=None) 
         Logger().print(f"TypeError occurred: {e}")
         return None
     except IndexError as e:
-        Logger().print(f"TypeError occurred: {e}")
+        Logger().print(f"IndexError occurred: {e}")
         return None
     except ValueError as e:
-        Logger().print(f"TypeError occurred: {e}")
+        Logger().print(f"ValueError occurred: {e}")
         return None
 
     Logger().print("[string_elems_to_int_list] String list turned into int list.")
@@ -74,6 +74,15 @@ def del_str_list_to_int_list(str_list:List[str]=None) -> Optional[List[int]]:
     upper_bound = len(PDF_Meta().get_pdf())+1
     lower_bound = 0
     ret = string_elems_to_int_list(str_list=str_list, lb=lower_bound, ub=upper_bound)
+    # Checks if the list was made successfully
+    if not ret:
+        Logger().print("[del_str_list_to_int_list] User had invalid input.")
+        return None
+
+    # Checks for negative numbered inputs
+    if any(x <= 0 for x in ret):
+        Logger().print("[del_str_list_to_int_list] User had invalid input that held a negative number.")
+        return None
     ret = list(set(ret))
     Logger().print("[del_str_list_to_int_list] Deletion string list turned into a list of ints.")
     return ret
@@ -267,7 +276,7 @@ def move_parser(s:str=None) -> List[List[int]]:
     # Make the string into a list of ints
     left, right = s.split(";")
     left = left.split(', ')
-    right = [int(right)]
+    right = [int(right)-1]
     lower_bounds = 0
     upper_bounds = PDF_Meta().pdf_length()+1
     left = list(set(string_elems_to_int_list(str_list=left, lb=lower_bounds, ub=upper_bounds)))
