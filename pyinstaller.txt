@@ -1,1 +1,1 @@
-pyinstaller --onefile --windowed --icon=../png2ico/icos/pdf_editor.ico --add-data "PDFlib;PDFlib" --add-data "logs;logs" auto_view.py
+pyinstaller --onefile --windowed --icon=icos/pdf_editor.ico --add-data "PDFlib;PDFlib" --add-data "logs;logs" PDF_Editor.py
