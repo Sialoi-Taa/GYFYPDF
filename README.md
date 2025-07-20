@@ -20,102 +20,13 @@ An interactive PDF viewer and editor built with Python, Tkinter, and pypdfium2. 
    cd GYFYPDF
    ```
 
-2. Make sure that you have a python interpretor to run the scripts.
-2. Run the package installation scripts to make sure you get all of the dependencies downloaded before running.
-   ```bash
-   python3 install_packages.py
-   ```
 
 ## Usage
-### Running Through Manual
-Using this way you will have to run the editor through terminal every time. If you would like to be able to right click a PDF and choose to run the editor through the right-click menu, look at the registry edit method of running this application.   
-
-1. Run the manual_view.py file:
-   ```bash
-   python3 manual_view.py
-   ```
-2. Choose a file to open.  
-![open_sample_file](./imgs/open_sample_file.png)
-3. Using the buttons and text boxes on the right side of the editor, edit the PDF as you'd like.
-![full layout](./imgs/fullscreen_layout.png)
-4. When you're satisfied with what was editted, press the save button to save the PDF. If the editor closes before saving, all modifications will be erased and the user will be forced to start over.
-![button layout](./imgs/button_layout.png)
-
-### Running Through Registry Edit
-Using this method you'll be able to right click any PDFs and have a more access friendly interface to run the script.  
-![right_click](./imgs/right_click_menu_example.png)
-
-1. Go to your Windows search bar and type below
-   ```bash
-   regedit
-   ```
-   You'll see a window as such below:  
-![Registry Edit Base Menu](./imgs/base_regedit_menu.png)
-
-2. Select and expand the *HKEY_CLASSES_ROOT* folder.  
-![HKEY_CLASSES_ROOT](./imgs/HKEY_expanded.png)
-
-3. Scroll down, select and expand the "*" folder.  
-![pdf_folder](./imgs/all_folder_expanded.png)
-
-4. Select and expand the *shell* folder.  
-![expand_shell_folder](./imgs/shell_folder_expanded.png)
-
-5. Select and right click the *shell* folder icon. Press "New" in the menu and then press "Key".  
-![create_new_key](./imgs/create_new_key.png)  
-
-6. A new folder will appear in the regedit window, name the folder "Open with PDF Editor".  
-![context_key_created](./imgs/context_key_created.png)
-
-7. Select the "Open with PDF Editor" folder and you'll a the variable on the right side. Double click that variable and a window will open.   
-![point_to_default_value](./imgs/pointing_to_default_context_value.png)  
-
-8. Press OK after changing the default value to "Open with PDF Editor" but without quotes and press OK.  
-![change_context_value](./imgs/change_context_default_value.png)  
-
-9. Select and right click the "Open with PDF Editor" folder icon. Make a new key and call it command.  
-![create_command_key](./imgs/command_selected.png)  
-Before moving onto the next step you have to find a 2 things. First you need the path to the where your python executable is located on your machine.  
-   You can do this by typing the following:
-   ```bash
-   where python3
-   ```  
-   Store the outputted pathway somewhere, we'll need that for the next step. Next locate the *reg_view.py* file inside this repo.  
-   Right click the file, copy the absolute path and store it somewhere for the next step. 
-
-10. Select the command key and double click the default value. A menu to edit the value will open.  
-![command_value_changed](./imgs/change_command_default_value.png)
-
-11. Select the default value box and place 3 double quotes ("") with space inbetween them.  
-![double quotes](./imgs/double_quote_data.png)  
-
-12. In the first double quotes, place in the path for your *python3.exe* file. An example would be below:  
-```bash
-"C:\Users\joe\AppData\Local\Microsoft\WindowsApps\python3.exe"
-```
-![first_double](./imgs/python_path.png)
-
-12. In the second double quotes, place in the path for your *reg_view.exe* file. An example would be below:  
-```bash
-"C:\Users\joe\OneDrive\Desktop\Custom_Utils\pdf_editor\reg_view.py"
-```
-![second_double](./imgs/reg_view_path.png)
-
-12. In the third double quotes, place in "". An example would be below:  
-```bash
-"%1"
-```
-
-13. Altogether, the default value should look like this:
-```bash
-"C:\Users\joe\AppData\Local\Microsoft\WindowsApps\python3.exe" "C:\Users\joe\OneDrive\Desktop\Custom_Utils\pdf_editor\reg_view.py" "%1"
-```
-
-14. Press OK and exit out of the regedit.
-
-15. The setup is complete and now this is how you can use the PDF Editor. Go to any PDF inside your file explorer and right click it.
-16. Scroll down the menu and select "more options".
-17. In that menu you'll see an option called "Open with PDF Editor". Click it and wait until the PDF editor opens up with your PDF.
+### Running Through Executable
+Go to the **dist** folder and you'll see the pdf_editor.exe file. You can use that exe file in 1 of 3 ways.  
+1) First way is to right click a PDF, press "Open with", press "Choose another app", scroll down and press "Choose app on your PC", go to the directory with the exe file, select the exe file, press "Always use this app", and when you double click any PDF it'll run the custom exe file.  
+2) Second way is to click and drag a PDF file to the exe file and it'll automatically open the app and run the script.  
+3) Last way is to open the exe by itself and select the PDF file.  
 
 ### How To Use The PDF Editor
 There's a few features that are highlighted in the PDF editor:
@@ -164,4 +75,5 @@ Where page_number is a single positive integer that represents how many pages yo
 ## Acknowledgments
 - [pypdfium2](https://github.com/pypdfium2/pypdfium2) for PDF rendering support.
 - [Pillow](https://github.com/python-pillow/Pillow) for image handling.
-- [pypdf](https://github.com/py-pdf/pypdf) for PDF editing support
+- [pypdf](https://github.com/py-pdf/pypdf) for PDF editing support.
+- [pyinstaller](https://pypi.org/project/pyinstaller) for creating the executable for portable use.
